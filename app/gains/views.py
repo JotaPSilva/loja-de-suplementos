@@ -4,6 +4,7 @@ from .forms import AdicionarProdutoForm, AdicionarCategoriaForm
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from carrinho.models import Carrinho
+from django.contrib.auth.decorators import user_passes_test
 
 
 def index(request):
@@ -54,6 +55,7 @@ def detalhar_produto(request, produto_id):
 
 
 @login_required(login_url="/login/")
+@user_passes_test(lambda u: u.is_superuser)
 def adicionar_produto(request):
     if request.method == "POST":
         form = AdicionarProdutoForm(request.POST, request.FILES)
@@ -68,6 +70,7 @@ def adicionar_produto(request):
 
 
 @login_required(login_url="/login/")
+@user_passes_test(lambda u: u.is_superuser)
 def adicionar_categoria(request):
     if request.method == "POST":
         form = AdicionarCategoriaForm(request.POST)

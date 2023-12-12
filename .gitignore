@@ -4,3 +4,6 @@ __pycache
 .env.dev
 .env.prod
 .env.prod.db
+
+app/mediafiles/*
+.vscode/settings.json

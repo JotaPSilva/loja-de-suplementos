@@ -8,17 +8,25 @@
         <li>
           <a href="{% url "login" %}" class="text-decoration-none">Entrar</a>
         </li>
-      {% else %}
+      {% elif user.is_superuser %}
         <li>
-          <a href="{% url "logout" %}" class="text-decoration-none">Sair</a>
+          <a href="{% url "adicionar_produto" %}">Adicionar produto</a>
         </li>
         <li>
-          <a href="{% url "adicionar_produto" %}" class="text-decoration-none">Adicionar produto</a>
-        </li>
-        <li>
-          <a href="{% url "adicionar_categoria" %}" class="text-decoration-none">Adicionar categoria</a>
+          <a href="{% url "adicionar_categoria" %}">Adicionar categoria</a>
         </li>
       {% endif %}
+      
+      {% if user.is_authenticated %}
+        <li>
+          <p>Bem-vindo, {{ user.username }}!</p>
+        </li>
+
+        <li>
+          <a href="{% url "logout" %}">Sair</a>
+        </li>
+      {% endif %}
+
       <li>
         <a href="{% url "carrinho" %}" class="text-decoration-none"
           ><i class="bi bi-cart-fill"></i
