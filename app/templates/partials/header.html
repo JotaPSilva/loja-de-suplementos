@@ -3,25 +3,29 @@
     <a href="{% url "index" %}" class="text-decoration-none text-white">Gains</a>
   </h1>
   <nav>
-    <ul class="list-unstyled d-flex gap-3">
+    <ul class="list-unstyled d-flex gap-3 justify-content-center align-items-center">
       {% if not user.is_authenticated %}
         <li>
           <a href="{% url "login" %}" class="text-decoration-none">Entrar</a>
         </li>
       {% elif user.is_superuser %}
-        <li>
-          <a href="{% url "adicionar_produto" %}">Adicionar produto</a>
-        </li>
-        <li>
-          <a href="{% url "adicionar_categoria" %}">Adicionar categoria</a>
-        </li>
+        <div class="dropdown">
+        <a class="btn btn-link text-decoration-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Administração
+        </a>
+      
+        <ul class="dropdown-menu">
+          <li>
+            <a href="{% url "adicionar_produto" %}" class="dropdown-item">Adicionar produto</a>
+          </li>
+          <li>
+            <a href="{% url "adicionar_categoria" %}" class="dropdown-item">Adicionar categoria</a>
+          </li>
+        </ul>
+      </div>
       {% endif %}
       
       {% if user.is_authenticated %}
-        <li>
-          <p>Bem-vindo, {{ user.username }}!</p>
-        </li>
-
         <li>
           <a href="{% url "logout" %}">Sair</a>
         </li>
