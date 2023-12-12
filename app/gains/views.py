@@ -96,3 +96,27 @@ def produto_por_categoria(request, id):
             "total_de_produtos": len(produtos),
         },
     )
+
+
+@login_required(login_url="/login/")
+@user_passes_test(lambda u: u.is_superuser)
+def editar_produto(request, produto_id):
+    produto = get_object_or_404(Produto, pk=produto_id)
+    if request.method == "POST":
+        form = AdicionarProdutoForm(request.POST, request.FILES, instance=produto)
+        if form.is_valid():
+            form.save()
+            return redirect("index")
+    else:
+        form = AdicionarProdutoForm(instance=produto)
+
+    context = {"form": form}
+    return render(request, "editar_produto.html", context)
+
+
+@login_required(login_url="/login/")
+@user_passes_test(lambda u: u.is_superuser)
+def excluir_produto(request, produto_id):
+    produto = get_object_or_404(Produto, pk=produto_id)
+    produto.delete()
+    return redirect("index")

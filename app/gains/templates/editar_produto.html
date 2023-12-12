@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% include "partials/categorias.html" %}
+  <section class="container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.nome.id_for_label }}" class="form-label">Nome</label>
+            {{ form.nome }}
+            {{ form.nome.errors }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.preco.id_for_label }}" class="form-label">Preço</label>
+            {{ form.preco }}
+            {{ form.preco.errors }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.descricao.id_for_label }}" class="form-label">Descrição</label>
+            {{ form.descricao }}
+            {{ form.descricao.errors }}
+        </div>    
+        <div class="form-group">
+            <label for="{{ form.foto.id_for_label }}" class="form-label">Foto</label>
+            {{ form.foto }}
+            {{ form.foto.errors }}
+        </div>    
+        <div class="form-group">
+            <label for="{{ form.categoria.id_for_label }}" class="form-label">Categoria</label>
+            {{ form.categoria }}
+            {{ form.categoria.errors }}
+        </div>    
+        <input type="submit" value="Atualizar" class="btn btn-primary mt-3">
+    </form>
+  </section>
+{% endblock content %}
