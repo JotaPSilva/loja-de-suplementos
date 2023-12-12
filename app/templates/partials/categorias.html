@@ -1,0 +1,9 @@
+<nav class="categories">
+    <ul class="d-flex justify-content-center list-unstyled gap-4">
+        {% for categoria in categorias %}
+            <li>
+                <a href="{% url "produto_por_categoria" categoria.id %}" class="text-decoration-none text-uppercase">{{ categoria }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+      <h2>Seu Carrinho de Compras</h2>
+    {% for item in carrinho %}
+        <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img
+              src="{{ item.produto.foto.url }}"
+              alt="{{ item.produto.nome }}"
+              class="img-fluid"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ item.quantidade }}x {{ item.produto.nome }}</h5>
+              <p class="card-text text-truncate">{{ item.produto.descricao }}</p>
+              <p class="card-text">R$ {{ item.produto.preco }}</p>
+              <a class="btn btn-danger" href="{% url 'remover_item_carrinho' item.id %}">Remover</a>
+            </div>
+          </div>
+        </div>
+      </div>    
+    {% endfor %}
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Resumo do Pedido</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Total: R$ {{ preco_total }}</li>
+          </ul>
+          <button class="btn btn-primary mt-2">Finalizar Compra</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% include "partials/categorias.html" %}
+  <section class="row">
+    <div class="col-md-6">
+      <h1 class="pb-3 border-bottom border-light">Cadastre-se</h1>
+      <p class="pb-3 border-bottom border-dark-subtle">
+        Ao criar uma conta em nossa loja, você será capaz de fechar pedidos
+        com mais agilidade, cadastrar diversos endereços, acompanhar seus
+        pedidos, entre outras vantagens.
+      </p>
+      <a href="{% url "registrar" %}" class="btn btn-outline-primary">Cadastre-se</a>
+    </div>
+    <div class="col-md-6">
+      <h1 class="pb-3 border-bottom border-light">Fazer login</h1>
+      <p>Se você já possui uma conta, informe os dados de acesso.</p>
+
+      <form method="post" class="d-flex flex-column gap-2">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="{{ form.username.id_for_label }}" class="form-label">Usuário</label>
+          {{ form.username }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.password.id_for_label }}" class="form-label">Senha</label>
+          {{ form.password }}
+        </div>
+        <input type="submit" value="Login" class="btn btn-primary">
+    </form>
+    </div>
+  </section>
+{% endblock content %}

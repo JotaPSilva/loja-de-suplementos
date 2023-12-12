@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% include "partials/categorias.html" %}
+  <section class="container">
+      <form method="post" class="d-flex flex-column gap-2">
+          <h1>Cadastro</h1>
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="{{ form.username.id_for_label }}" class="form-label">Usuário</label>
+          {{ form.username }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.password1.id_for_label }}" class="form-label">Senha</label>
+          {{ form.password1 }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.password2.id_for_label }}" class="form-label">Senha</label>
+            {{ form.password2 }}
+        </div>
+        <input type="submit" value="Cadastrar" class="btn btn-primary">
+    </form>
+    </div>
+  </section>
+{% endblock content %}

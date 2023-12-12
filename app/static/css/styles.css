@@ -1,0 +1,129 @@
+@font-face {
+  font-family: "Darkmode";
+  src: url("../fonts/Darkmode-Regular.woff2") format("woff2"),
+    url("../fonts/Darkmode-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  --bs-font-sans-serif: "Roboto", sans-serif;
+  --bs-body-bg: black;
+  --bs-secondary-bg: #1a1a1a;
+  --bs-tertiary-bg: #1a1a1a;
+  --bs-body-color: white;
+  --bs-border-radius: 0;
+  --bs-secondary-color: #585858;
+  --bs-link-color: white;
+  --bs-link-color-rgb: 255, 255, 255;
+  --bs-link-hover-color: red;
+  --bs-link-hover-color-rgb: 255, 0, 0;
+  --bs-border-color: #333;
+}
+
+header h1 {
+  font-family: "Darkmode", sans-serif;
+  font-size: 4rem;
+}
+
+nav a:hover {
+  transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+}
+
+.categories a {
+  letter-spacing: 0.2em;
+}
+
+.product__price {
+  color: yellow;
+}
+
+.btn {
+  --bs-btn-border-radius: 0;
+  --bs-btn-color: white;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  --bs-btn-bg: red;
+  --bs-btn-hover-bg: #b11519;
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-border-color: transparent;
+  --bs-btn-active-bg: #b11519;
+  --bs-btn-active-border-color: transparent;
+}
+
+.btn-primary:hover {
+  background-color: var(--bs-btn-hover-bg);
+  transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: white;
+  --bs-btn-border-color: #333;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #b11519;
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #b11519;
+  --bs-btn-active-border-color: transparent;
+}
+
+.btn-danger {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #ac101e;
+  --bs-btn-border-color: #ac101e;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #8c0d17;
+  --bs-btn-hover-border-color: #800c15;
+  --bs-btn-focus-shadow-rgb: 170, 16, 30;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #800c15;
+  --bs-btn-active-border-color: #750b13;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #ac101e;
+  --bs-btn-disabled-border-color: #ac101e;
+}
+
+.breadcrumb {
+  --bs-breadcrumb-item-active-color: white;
+  --bs-breadcrumb-divider-color: white;
+}
+
+.breadcrumb-item.active {
+  color: var(--bs-breadcrumb-item-active-color);
+  font-weight: bold;
+}
+
+.buy-container__price {
+  color: yellow;
+}
+
+.form-select,
+.form-control {
+  background-color: #1a1a1a;
+  border-color: #333;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #1a1a1a;
+  border-color: #333;
+  box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25);
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.sort-filters {
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+  padding: 12px 0;
+}
+
+.pagination {
+  --bs-pagination-focus-box-shadow: 0 0 0 0.1rem rgba(255, 0, 0, 0.25);
+}

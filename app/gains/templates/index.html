@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% include "partials/categorias.html" %}
+  <section class="row row-gap-4">
+    <nav class="d-flex gap-4 align-items-center sort-filters">
+      <span class="fw-bold">{{ total_de_produtos }} Produto(s)</span>
+      <div class="d-flex gap-2 align-items-center">
+        <form action="{% url "index" %}">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Pesquisar"
+              name="q"
+            />
+            <button class="btn btn-outline-secondary" type="submit">
+              <i class="bi bi-search"></i>
+            </button>          
+        </form>
+      </div>
+    </nav>
+
+    {% for produto in produtos %}
+        <div class="product d-flex flex-column col-md-3 text-center">
+        <img src="{{ produto.foto.url }}" alt="{{ produto.nome }}" />
+        <h2>{{ produto.nome }}</h2>
+        <span class="product__price fs-3 fw-bold align-self-center">R$ {{ produto.preco }}</span>
+        <a href="{% url "detalhar_produto" produto.id %}" class="btn btn-primary align-self-center mt-3"
+          >Detalhar</a
+        >
+      </div>
+    {% endfor %}
+  </section>
+  <nav class="mt-4">
+    <ul class="pagination">
+      {% if produtos.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ produtos.previous_page_number }}">Anterior</a></li>
+      {% endif %}
+
+      {% for produto in produtos.paginator.page_range %}
+        {% if produtos.number == produto %}
+          <li class="page-item" aria-current="page">
+            <span class="page-link">{{ produto }}</span>
+          </li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="?page={{ produto }}">{{ produto }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if produtos.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ produtos.next_page_number }}">Próximo</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endblock content %}
