@@ -120,3 +120,27 @@ def excluir_produto(request, produto_id):
     produto = get_object_or_404(Produto, pk=produto_id)
     produto.delete()
     return redirect("index")
+
+
+@login_required(login_url="/login/")
+@user_passes_test(lambda u: u.is_superuser)
+def editar_categoria(request, id):
+    categoria = get_object_or_404(Categoria, pk=id)
+    if request.method == "POST":
+        form = AdicionarCategoriaForm(request.POST, instance=categoria)
+        if form.is_valid():
+            form.save()
+            return redirect("index")
+    else:
+        form = AdicionarCategoriaForm(instance=categoria)
+
+    context = {"form": form, "categoria": categoria}
+    return render(request, "editar_categoria.html", context)
+
+
+@login_required(login_url="/login/")
+@user_passes_test(lambda u: u.is_superuser)
+def excluir_categoria(request, id):
+    categoria = get_object_or_404(Categoria, pk=id)
+    categoria.delete()
+    return redirect("index")

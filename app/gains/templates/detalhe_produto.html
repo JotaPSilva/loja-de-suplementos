@@ -23,9 +23,13 @@
 
           {% if user.is_superuser %}
             <div class="d-flex gap-2 align-items-center">
+              <a href="{% url "editar_categoria" produto.categoria.id %}" class="btn btn-primary">
+                <i class="bi bi-pencil-fill"></i>
+                Editar categoria
+              </a>
               <a href="{% url "editar_produto" produto.id %}" class="btn btn-primary">
                 <i class="bi bi-pencil-fill"></i>
-                Editar
+                Editar produto
               </a>
               <a href="{% url "excluir_produto" produto.id %}" class="btn btn-primary">
                 <i class="bi bi-trash-fill"></i>

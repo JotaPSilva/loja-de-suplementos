@@ -6,6 +6,8 @@ from .views import (
     produto_por_categoria,
     editar_produto,
     excluir_produto,
+    editar_categoria,
+    excluir_categoria,
 )
 from django.urls import path
 
@@ -21,4 +23,6 @@ urlpatterns = [
     ),
     path("editar_produto/<int:produto_id>/", editar_produto, name="editar_produto"),
     path("excluir_produto/<int:produto_id>/", excluir_produto, name="excluir_produto"),
+    path("editar_categoria/<int:id>/", editar_categoria, name="editar_categoria"),
+    path("excluir_categoria/<int:id>/", excluir_categoria, name="excluir_categoria"),
 ]
