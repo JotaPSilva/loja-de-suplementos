@@ -32,8 +32,8 @@
       </div>
     {% endfor %}
   </section>
-  <nav class="mt-4">
-    <ul class="pagination">
+  <nav class="mt-4 d-flex justify-content-center align-items-center">
+    <ul class="pagination ">
       {% if produtos.has_previous %}
         <li class="page-item"><a class="page-link" href="?page={{ produtos.previous_page_number }}">Anterior</a></li>
       {% endif %}
